@@ -1,0 +1,1 @@
+Skippa funktioner för att skriva ut html kod använd 

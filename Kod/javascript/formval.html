@@ -1,0 +1,98 @@
+
+
+
+<!DOCTYPE html>
+<html>  
+  <head>  
+    <link href="formval.css" rel="stylesheet" type="text/css"/>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+
+
+
+   <meta http-equiv="Content-Script-Type" content="text/javascript">  
+    <script type="text/javascript">  
+   
+	$(document).ready(function() {
+
+			$("#name1").keyup(function(){
+				
+			var re = /^[0]{2}[0-9]{6,15}$/;    //måste börja med 2 st nollor, sedan 0-9 minst 6st max 15 där efter får de ej finnas något
+			
+			var OK = re.exec($('#name1').val());
+			
+			if (!OK){  
+			
+				$('#name1').removeClass("ok");
+		   jQuery("#name1").css('background-color','red').css('color','white');
+       
+			}else{
+				
+				$('#name1').addClass("ok");
+				}
+				
+				var val = parseFloat(jQuery("#name1").val());
+      if(isNaN(val))
+      {
+        jQuery("#name1").css('background-color','red').css('color','white');
+      
+      
+      jQuery("#name1").focus();
+      }
+      else
+      {
+        jQuery("#name1").css('background-color','').css('color','');
+      }
+				
+			});
+			
+//_______________________________
+
+
+
+	$("#name1").focusout(function() {
+    
+			$("#name1").animate({
+					
+					opacity:'0.5',
+					 left:'-200px'
+			});
+
+		
+			$("#l1").text($("#name1").val());
+	
+	
+		});
+		
+		
+		
+		
+
+  });
+	
+	  </script>  
+  </head>  
+  <body>  
+
+<br><br><br><br><br>
+
+
+<form id="form3" name="form3" method="post" action="validering.php">
+
+<div id="tt" >
+
+<label id="l1"for="email">Förnamn:</label><input style="position:absolute;" name="name" id="name1" type="text" /></div>
+<label for="email">Efternamn:</label><input name="name" id="name" type="text" /><br />
+<label for="email">Mail:</label><input name="email" id="email" type="email" /><br />
+<label for="email">tele:</label><input name="phone" id="phone" type="tel" /><br />
+<input name="submit" type="button" value="Submit" />
+
+</form>
+
+
+	 
+	 
+  </body>  
+</html>
+
+
